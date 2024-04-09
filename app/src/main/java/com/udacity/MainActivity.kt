@@ -11,9 +11,10 @@ import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
+import com.udacity.base.BaseActivity
 import com.udacity.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     private lateinit var binding: ActivityMainBinding
 
@@ -23,18 +24,22 @@ class MainActivity : AppCompatActivity() {
     private lateinit var pendingIntent: PendingIntent
     private lateinit var action: NotificationCompat.Action
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+    override fun instanceViewBinding(): ActivityMainBinding {
+        return ActivityMainBinding.inflate(layoutInflater)
+    }
+
+    override fun initViews() {
         setSupportActionBar(binding.toolbar)
 
         registerReceiver(receiver, IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE))
-
         // TODO: Implement code below
-//        binding.custom_button.setOnClickListener {
-//            download()
-//        }
+        mBinding.layoutMain.btnLoading.setOnClickListener {
+            download()
+        }
+    }
+
+    override fun initActions() {
+
     }
 
     private val receiver = object : BroadcastReceiver() {
@@ -60,6 +65,6 @@ class MainActivity : AppCompatActivity() {
     companion object {
         private const val URL =
             "https://github.com/udacity/nd940-c3-advanced-android-programming-project-starter/archive/master.zip"
-        private const val CHANNEL_ID = "channelId"
+        private const val CHANNEL_ID = "ND940C3-channelId"
     }
 }

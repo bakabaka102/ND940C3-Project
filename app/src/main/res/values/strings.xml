@@ -8,7 +8,9 @@
     <string name="notification_description">The Project 3 repository is downloaded</string>
     <string name="notification_button">See changes</string>
 
-    <string name="button_name">Click me</string>
     <string name="button_loading">We are loading </string>
     <string name="title_activity_detail">DetailActivity</string>
+    <string name="option_download_first">Option_download_first</string>
+    <string name="option_download_second">Option_download_second</string>
+    <string name="option_download_third">Option_download_third</string>
 </resources>
