@@ -16,8 +16,6 @@ import com.udacity.databinding.ActivityMainBinding
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
 
-    private lateinit var binding: ActivityMainBinding
-
     private var downloadID: Long = 0
 
     private lateinit var notificationManager: NotificationManager
@@ -29,12 +27,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
 
     override fun initViews() {
-        setSupportActionBar(binding.toolbar)
+        setSupportActionBar(mBinding.toolbar)
 
         registerReceiver(receiver, IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE))
         // TODO: Implement code below
         mBinding.layoutMain.btnLoading.setOnClickListener {
-            download()
+            //download()
         }
     }
 

@@ -32,17 +32,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0fc699c9-3153-46ce-a47a-52448a1827f3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/udacity/base/BaseActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/udacity/DetailActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/udacity/DetailActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/udacity/LoadingButton.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/udacity/LoadingButton.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/udacity/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/udacity/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_detail.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_detail.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/udacity/base/BaseActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/udacity/base/BaseActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/content_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/content_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/attrs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/attrs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +47,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[45a8de480804]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -74,10 +69,38 @@
     </system>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitToolBoxStore">
     <option name="projectConfigVersion" value="5" />
+    <option name="recentBranches">
+      <RecentBranches>
+        <option name="branchesForRepo">
+          <list>
+            <RecentBranchesForRepo>
+              <option name="branches">
+                <list>
+                  <RecentBranch>
+                    <option name="branchName" value="feature/implement-download" />
+                    <option name="lastUsedInstant" value="1712672297" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="master" />
+                    <option name="lastUsedInstant" value="1712672296" />
+                  </RecentBranch>
+                </list>
+              </option>
+              <option name="repositoryRootUrl" value="file://$PROJECT_DIR$" />
+            </RecentBranchesForRepo>
+          </list>
+        </option>
+      </RecentBranches>
+    </option>
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
@@ -181,6 +204,19 @@
       <option name="presentableId" value="Default" />
       <updated>1711382714509</updated>
     </task>
+    <task id="LOCAL-00001" summary="Implement download, notify">
+      <option name="closed" value="true" />
+      <created>1712672426290</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1712672426290</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Implement download, notify" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implement download, notify" />
   </component>
 </project>

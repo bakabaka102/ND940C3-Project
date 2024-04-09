@@ -1,17 +1,21 @@
 package com.udacity
 
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import com.udacity.base.BaseActivity
 import com.udacity.databinding.ActivityDetailBinding
 
-class DetailActivity : AppCompatActivity() {
+class DetailActivity : BaseActivity<ActivityDetailBinding>() {
 
-    private lateinit var binding: ActivityDetailBinding
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityDetailBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        setSupportActionBar(binding.toolbar)
+    override fun instanceViewBinding(): ActivityDetailBinding {
+        return ActivityDetailBinding.inflate(layoutInflater)
     }
+
+    override fun initViews() {
+        setSupportActionBar(mBinding.toolbar)
+
+    }
+
+    override fun initActions() {
+
+    }
+
 }
