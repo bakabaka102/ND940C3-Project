@@ -9,6 +9,7 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.net.Uri
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
 import com.udacity.base.BaseActivity
@@ -37,7 +38,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
 
     override fun initActions() {
-
+        mBinding.layoutMain.btnLoading.setOnClickListener {
+            Toast.makeText(this, "Click download", Toast.LENGTH_SHORT).show()
+            mBinding.layoutMain.btnLoading.changeStateOfButton(ButtonState.Loading)
+            //Thread.sleep(2000)
+            mBinding.layoutMain.btnLoading.changeStateOfButton(ButtonState.Completed)
+        }
     }
 
     private val receiver = object : BroadcastReceiver() {

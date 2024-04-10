@@ -6,5 +6,6 @@
         <attr name="default_text_color" format="string" />
         <attr name="loading_text_color" format="color" />
         <attr name="loading_text" format="string" />
+        <attr name="default_text" format="string" />
     </declare-styleable>
 </resources>

@@ -19,5 +19,6 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
         mBinding = instanceViewBinding()
         setContentView(mBinding.root)
         initViews()
+        initActions()
     }
 }
