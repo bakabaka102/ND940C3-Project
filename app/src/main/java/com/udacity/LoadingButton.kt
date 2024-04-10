@@ -119,12 +119,6 @@ class LoadingButton @JvmOverloads constructor(
         }
     }
 
-    /*override fun performClick(): Boolean {
-        super.performClick()
-
-        return true
-    }*/
-
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         canvas.drawRectangle(paintBackgroundNormal)

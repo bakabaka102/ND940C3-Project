@@ -33,11 +33,8 @@
   <component name="ChangeListManager">
     <list default="true" id="0fc699c9-3153-46ce-a47a-52448a1827f3" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/udacity/LoadingButton.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/udacity/LoadingButton.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/udacity/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/udacity/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/udacity/base/BaseActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/udacity/base/BaseActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/content_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/content_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/attrs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/attrs.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -220,12 +217,21 @@
       <option name="project" value="LOCAL" />
       <updated>1712682607983</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Implement download, notify&#10;- Animation download">
+      <option name="closed" value="true" />
+      <created>1712768618913</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1712768618913</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Implement download, notify" />
     <MESSAGE value="Implement download, notify&#10;- Init some base" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implement download, notify&#10;- Init some base" />
+    <MESSAGE value="Implement download, notify&#10;- Animation download" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implement download, notify&#10;- Animation download" />
   </component>
 </project>
