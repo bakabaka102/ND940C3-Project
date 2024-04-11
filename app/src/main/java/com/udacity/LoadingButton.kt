@@ -35,7 +35,7 @@ class LoadingButton @JvmOverloads constructor(
     private var loadingTextColor
     private var loadingText*/
     private val paintBackgroundNormal = Paint().apply {
-
+        strokeCap = Paint.Cap.ROUND
     }
     private val paintProgress = Paint().apply {
         isAntiAlias = true
@@ -91,9 +91,9 @@ class LoadingButton @JvmOverloads constructor(
 
     init {
 
-        /*context.withStyledAttributes(attrs, R.styleable.LoadingButton) {
+        context.withStyledAttributes(attrs, R.styleable.LoadingButton) {
 
-        }*/
+        }
         val styleAttr = context.obtainStyledAttributes(attrs, R.styleable.LoadingButton, 0, 0)
 
         defaultBackgroundColor = styleAttr.getColor(
@@ -104,9 +104,8 @@ class LoadingButton @JvmOverloads constructor(
             R.styleable.LoadingButton_loading_background_color,
             Color.parseColor(resources.getString(R.color.colorPrimaryDark))
         )
-        defaultText = styleAttr.getString(R.styleable.LoadingButton_default_text).toString()
-        loadingText = styleAttr.getString(R.styleable.LoadingButton_loading_text).toString()
-
+        defaultText = styleAttr.getString(R.styleable.LoadingButton_default_text) ?: defaultText
+        loadingText = styleAttr.getString(R.styleable.LoadingButton_loading_text) ?: loadingText
 
         styleAttr.recycle()
 
@@ -129,13 +128,15 @@ class LoadingButton @JvmOverloads constructor(
     private fun Canvas.drawRectangle(paint: Paint) {
         val rectF = RectF(0F, 0F, widthSize.toFloat(), heightSize.toFloat())
         paint.color = defaultBackgroundColor
-        this.drawRect(rectF, paint)
+        //this.drawRect(rectF, paint)
+        this.drawRoundRect(rectF, 40f, 40f, paint)
     }
 
     private fun Canvas.drawProgressRectangle(paint: Paint, progress: Float) {
         val rectF = RectF(0F, 0F, widthSize.toFloat() * progress, heightSize.toFloat())
         paint.color = loadingBackgroundColor
-        this.drawRect(rectF, paint)
+        //this.drawRect(rectF, paint)
+        this.drawRoundRect(rectF, 40f, 40f, paint)
     }
 
     private fun Canvas.drawText(value: String, paint: Paint) {
