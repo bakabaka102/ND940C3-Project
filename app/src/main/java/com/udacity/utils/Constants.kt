@@ -6,4 +6,6 @@ object Constants {
     const val URL =
         "https://github.com/udacity/nd940-c3-advanced-android-programming-project-starter/archive/master.zip"
 
+    const val NO_DOWNLOAD = 0L
+
 }
