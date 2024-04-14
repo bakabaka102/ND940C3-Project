@@ -69,7 +69,6 @@ class LoadingButton @JvmOverloads constructor(
                             progressValue = 0F
                             invalidate()
                         }
-
                     })
                     start()
                 }

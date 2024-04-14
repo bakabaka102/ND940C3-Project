@@ -57,7 +57,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     override fun initActions() {
         mBinding.layoutMain.btnLoading.setOnClickListener {
-            showNotification()
             downloadFile()
         }
     }
@@ -76,7 +75,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         override fun onReceive(context: Context?, intent: Intent?) {
             val id = intent?.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, -1)
             id?.let {
-                statusQuery(it)
+                val statusQuery = statusQuery(it)
+                statusQuery.takeIf { status ->
+                    status != "UNKNOWN"
+                }?.run {
+                    showNotification(downLoadFileName, statusQuery)
+                }
             }
         }
     }
@@ -99,13 +103,13 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
 
 
-    private fun showNotification() {
+    private fun showNotification(title: String, description: String) {
         val notification: Notification =
             NotificationCompat.Builder(this, Constants.CHANNEL_NOTIFY_ID)
                 .setSmallIcon(R.mipmap.ic_launcher)
-                .setContentTitle("longTitle1")
-                .setContentText("longText1")
-                .setStyle(NotificationCompat.BigTextStyle().bigText("longText1"))
+                .setContentTitle(title)
+                .setContentText(description)
+                .setStyle(NotificationCompat.BigTextStyle().bigText(description))
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT).build()
 
         if (ActivityCompat.checkSelfPermission(
@@ -128,12 +132,13 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
 
     private fun download() {
-        mBinding.layoutMain.btnLoading.changeStateOfButton(ButtonState.Loading)
+        //mBinding.layoutMain.btnLoading.changeStateOfButton(ButtonState.Loading)
         //Thread.sleep(2000)
-        mBinding.layoutMain.btnLoading.changeStateOfButton(ButtonState.Completed)
+        //mBinding.layoutMain.btnLoading.changeStateOfButton(ButtonState.Completed)
         downloadID.takeIf { it != Constants.NO_DOWNLOAD }
         if (downloadID != Constants.NO_DOWNLOAD) {
             mDownloadManager.remove(downloadID)
+            unregisterDownloadContentObserver()
             downloadID = Constants.NO_DOWNLOAD
         }
 
@@ -147,7 +152,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
         // enqueue puts the download request in the queue.
         downloadID = mDownloadManager.enqueue(request)
-        mDownloadManager.createAndRegisterDownloadContentObserver()
+        mDownloadManager.registerDownloadContentObserver()
     }
 
     private fun unregisterDownloadContentObserver() {
@@ -157,7 +162,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         }
     }
 
-    private fun DownloadManager.createAndRegisterDownloadContentObserver() {
+    private fun DownloadManager.registerDownloadContentObserver() {
         val observer = object : ContentObserver(Handler(Looper.getMainLooper())) {
             override fun onChange(selfChange: Boolean) {
                 mContentObserver?.run {
@@ -216,5 +221,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     override fun onDestroy() {
         super.onDestroy()
         unregisterReceiver(receiver)
+        unregisterDownloadContentObserver()
     }
 }
