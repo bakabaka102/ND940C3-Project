@@ -32,8 +32,7 @@ class LoadingButton @JvmOverloads constructor(
     private var buttonText = "Download"
 
     /*private var defaultTextColor
-    private var loadingTextColor
-    private var loadingText*/
+    private var loadingTextColor*/
     private val paintBackgroundNormal = Paint().apply {
         strokeCap = Paint.Cap.ROUND
     }
@@ -48,7 +47,7 @@ class LoadingButton @JvmOverloads constructor(
 
     private var valueAnimator = ValueAnimator()
 
-    private var buttonState: ButtonState by Delegates.observable(ButtonState.Completed) { p, old, new ->
+    private var buttonState: ButtonState by Delegates.observable(ButtonState.Completed) { _, _, new ->
         when (new) {
             ButtonState.Clicked -> {
                 buttonText = defaultText
@@ -57,7 +56,6 @@ class LoadingButton @JvmOverloads constructor(
             ButtonState.Completed -> {
                 valueAnimator.cancel()
                 valueAnimator = ValueAnimator.ofFloat(progressValue, 1F).apply {
-                    duration = 500
                     addUpdateListener {
                         progressValue = it.animatedValue as Float
                         invalidate()

@@ -15,6 +15,7 @@ import android.widget.RadioButton
 import androidx.core.net.toUri
 import com.udacity.base.BaseActivity
 import com.udacity.databinding.ActivityMainBinding
+import com.udacity.download.DownloadStatus
 import com.udacity.download.requestDownload
 import com.udacity.download.statusQuery
 import com.udacity.notify.createNotificationChannel
@@ -67,10 +68,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             val id = intent?.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, -1)
             id?.let {
                 mDownloadManager.statusQuery(it).takeIf { status ->
-                    status != "UNKNOWN"
+                    status != DownloadStatus.Unknown
                 }?.run {
                     this@MainActivity.createNotificationChannel()
-                    this@MainActivity.showNotification(downLoadFileName, this)
+                    this@MainActivity.showNotification(downLoadFileName, this.toString())
                 }
             }
         }

@@ -6,18 +6,18 @@ import android.net.Uri
 import com.udacity.utils.Constants
 
 @SuppressLint("Range")
-fun DownloadManager.statusQuery(id: Long): String {
+fun DownloadManager.statusQuery(id: Long): DownloadStatus {
     val cursor = this.query(DownloadManager.Query().setFilterById(id))
     cursor.use {
         with(it) {
             if (moveToFirst()) {
                 return when (getInt(getColumnIndex(DownloadManager.COLUMN_STATUS))) {
-                    DownloadManager.STATUS_SUCCESSFUL -> "SUCCESSFUL"
-                    DownloadManager.STATUS_FAILED -> "FAILED"
-                    else -> "UNKNOWN"
+                    DownloadManager.STATUS_SUCCESSFUL -> DownloadStatus.Successful
+                    DownloadManager.STATUS_FAILED -> DownloadStatus.Failed
+                    else -> DownloadStatus.Unknown
                 }
             }
-            return "UNKNOWN"
+            return DownloadStatus.Unknown
         }
     }
 }

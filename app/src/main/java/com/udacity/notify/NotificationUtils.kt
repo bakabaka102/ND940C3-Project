@@ -10,11 +10,15 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
+import android.os.Bundle
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import androidx.core.os.bundleOf
+import com.udacity.BuildConfig
 import com.udacity.DetailActivity
 import com.udacity.R
+import com.udacity.download.DownloadStatus
 import com.udacity.utils.Constants
 import com.udacity.utils.Logger
 import com.udacity.utils.ToastUtils
@@ -40,7 +44,12 @@ fun Context.createNotificationChannel() {
 }
 
 fun Context.showNotification(title: String, description: String) {
-    val resultIntent = Intent(this, DetailActivity::class.java)
+    val resultIntent = Intent(this, DetailActivity::class.java).apply {
+        bundleOf(
+            Constants.FILE_NAME to title,
+            Constants.DOWNLOAD_STATUS to description
+        )
+    }
     // Create the TaskStackBuilder.
     val resultPendingIntent: PendingIntent? = TaskStackBuilder.create(this).run {
         // Add the intent, which inflates the back stack.
