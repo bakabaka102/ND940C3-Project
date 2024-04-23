@@ -12,6 +12,7 @@ import android.graphics.RectF
 import android.util.AttributeSet
 import android.view.View
 import androidx.core.content.withStyledAttributes
+import com.udacity.utils.Logger
 import kotlin.properties.Delegates
 
 @SuppressLint("ResourceType")
@@ -57,6 +58,7 @@ class LoadingButton @JvmOverloads constructor(
                 valueAnimator.cancel()
                 valueAnimator = ValueAnimator.ofFloat(progressValue, 1F).apply {
                     addUpdateListener {
+                        Logger.d("progressValue --- $progressValue")
                         progressValue = it.animatedValue as Float
                         invalidate()
                     }

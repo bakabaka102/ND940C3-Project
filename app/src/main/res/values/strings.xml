@@ -15,4 +15,7 @@
     <string name="option_download_first">Option_download_first</string>
     <string name="option_download_second">Option_download_second</string>
     <string name="option_download_third">Option_download_third</string>
+
+    <string name="file_name">File name: %s</string>
+    <string name="download_status">Status: %s</string>
 </resources>

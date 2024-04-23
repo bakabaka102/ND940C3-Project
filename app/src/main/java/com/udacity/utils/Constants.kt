@@ -10,7 +10,8 @@ object Constants {
 
     const val NO_DOWNLOAD = 0L
 
-    const val FILE_NAME = "${BuildConfig.APPLICATION_ID}.FILE_NAME"
-    const val DOWNLOAD_STATUS = "${BuildConfig.APPLICATION_ID}.DOWNLOAD_STATUS"
+    const val FILE_NAME = "FILE_NAME"
+    const val DOWNLOAD_STATUS = "DOWNLOAD_STATUS"
+    const val DOWNLOAD_INFO = "DOWNLOAD_INFO"
 
 }

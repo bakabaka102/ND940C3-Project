@@ -67,11 +67,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         override fun onReceive(context: Context?, intent: Intent?) {
             val id = intent?.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, -1)
             id?.let {
-                mDownloadManager.statusQuery(it).takeIf { status ->
-                    status != DownloadStatus.Unknown
-                }?.run {
+                val statusQuery = mDownloadManager.statusQuery(it)
+                if (statusQuery != DownloadStatus.Unknown) {
                     this@MainActivity.createNotificationChannel()
-                    this@MainActivity.showNotification(downLoadFileName, this.toString())
+                    this@MainActivity.showNotification(downLoadFileName, statusQuery.name)
                 }
             }
         }
