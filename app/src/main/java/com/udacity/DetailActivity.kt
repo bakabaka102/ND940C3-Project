@@ -1,17 +1,37 @@
 package com.udacity
 
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import android.annotation.SuppressLint
+import com.udacity.base.BaseActivity
 import com.udacity.databinding.ActivityDetailBinding
+import com.udacity.utils.Constants
+import com.udacity.utils.Logger
 
-class DetailActivity : AppCompatActivity() {
+class DetailActivity : BaseActivity<ActivityDetailBinding>() {
 
-    private lateinit var binding: ActivityDetailBinding
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityDetailBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        setSupportActionBar(binding.toolbar)
+    override fun instanceViewBinding(): ActivityDetailBinding {
+        return ActivityDetailBinding.inflate(layoutInflater)
     }
+
+    @SuppressLint("NewApi")
+    override fun initViews() {
+        setSupportActionBar(mBinding.toolbar)
+        val fileName by lazy {
+            intent?.extras?.getString(Constants.FILE_NAME, "unknownText") ?: "unknownText"
+        }
+        val downloadStatus by lazy {
+            intent?.extras?.getString(Constants.DOWNLOAD_STATUS, "unknownText") ?: "unknownText"
+        }
+        Logger.d("filename: $fileName  --- downloadStatus: $downloadStatus")
+        mBinding.layoutDetailContent.textLabelName.text = getString(R.string.file_name, fileName)
+        mBinding.layoutDetailContent.textDownloadStatus.text =
+            getString(R.string.download_status, downloadStatus)
+
+    }
+
+    override fun initActions() {
+        mBinding.layoutDetailContent.btnOK.setOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
+        }
+    }
+
 }

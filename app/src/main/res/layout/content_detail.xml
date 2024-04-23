@@ -4,8 +4,46 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingHorizontal="@dimen/dimen_20dp"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".DetailActivity"
     tools:showIn="@layout/activity_detail">
+
+    <TextView
+        android:id="@+id/textLabelName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_20dp"
+        android:text="@string/file_name"
+        android:textSize="@dimen/dimen_24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/textDownloadStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_20dp"
+        android:text="@string/download_status"
+        android:textSize="@dimen/dimen_24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textLabelName" />
+
+    <Button
+        android:id="@+id/btnOK"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_20dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:paddingVertical="@dimen/dimen_12dp"
+        android:text="@android:string/ok"
+        android:textColor="@color/white"
+        android:textSize="@dimen/dimen_24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textDownloadStatus" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
