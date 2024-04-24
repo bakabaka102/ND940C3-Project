@@ -22,8 +22,8 @@ class DetailActivity : BaseActivity<ActivityDetailBinding>() {
             intent?.extras?.getString(Constants.DOWNLOAD_STATUS, "unknownText") ?: "unknownText"
         }
         Logger.d("filename: $fileName  --- downloadStatus: $downloadStatus")
-        mBinding.layoutDetailContent.textLabelName.text = getString(R.string.file_name, fileName)
-        mBinding.layoutDetailContent.textDownloadStatus.text =
+        mBinding.layoutDetailContent.fileNameText.text = getString(R.string.file_name, fileName)
+        mBinding.layoutDetailContent.downloadStatusTextLabel.text =
             getString(R.string.download_status, downloadStatus)
 
     }
