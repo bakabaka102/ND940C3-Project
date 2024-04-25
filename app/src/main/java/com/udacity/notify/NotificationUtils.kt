@@ -50,14 +50,15 @@ fun Context.showNotification(title: String, description: String) {
             )
         )
     }
-    // Create the TaskStackBuilder.
     val resultPendingIntent: PendingIntent? = TaskStackBuilder.create(this).run {
-        // Add the intent, which inflates the back stack.
         addNextIntentWithParentStack(resultIntent)
-        // Get the PendingIntent containing the entire back stack.
         getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
     }
-
+    val statusAction = NotificationCompat.Action.Builder(
+        R.mipmap.ic_launcher,
+        this.getString(R.string.notification_action_status),
+        resultPendingIntent
+    ).build()
     val notification: Notification =
         NotificationCompat.Builder(this, Constants.CHANNEL_NOTIFY_ID)
             .setSmallIcon(R.mipmap.ic_launcher)
@@ -66,6 +67,7 @@ fun Context.showNotification(title: String, description: String) {
             .setStyle(NotificationCompat.BigTextStyle().bigText(description))
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
             .setContentIntent(resultPendingIntent).setAutoCancel(true)
+            .addAction(statusAction)
             .build()
 
     if (ActivityCompat.checkSelfPermission(

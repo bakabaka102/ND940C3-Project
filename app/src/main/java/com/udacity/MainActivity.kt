@@ -71,6 +71,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                 if (statusQuery != DownloadStatus.Unknown) {
                     this@MainActivity.createNotificationChannel()
                     this@MainActivity.showNotification(downLoadFileName, statusQuery.name)
+                    ToastUtils.showToast(this@MainActivity, "Download ${statusQuery.name}")
                 }
             }
         }
