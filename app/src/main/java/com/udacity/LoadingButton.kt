@@ -49,23 +49,16 @@ class LoadingButton @JvmOverloads constructor(
         textSize = context.resources.getDimension(R.dimen.dimen_24sp)
         textAlign = Paint.Align.CENTER
     }
+
+    //For Arc shape Progress
     private val paintArcProgress = Paint().apply {
         isAntiAlias = true
     }
-
-    //For Arc shape Progress
-    private val progressOvalRect = RectF()
     private var currentProgressArc = 0f
     private var progressArcSize = 0f
-    private val progressArcAnimator = ValueAnimator.ofFloat(0f, 360F).apply {
-        repeatMode = ValueAnimator.RESTART
-        repeatCount = ValueAnimator.INFINITE
-        interpolator = LinearInterpolator()
-        addUpdateListener {
-            currentProgressArc = it.animatedValue as Float
-            invalidate()
-        }
-    }
+    private var progressArcAnimator = ValueAnimator()
+
+    //
     private var valueAnimator = ValueAnimator()
 
     private var buttonState: ButtonState by Delegates.observable(ButtonState.Completed) { _, _, new ->
@@ -108,6 +101,16 @@ class LoadingButton @JvmOverloads constructor(
                         invalidate()
                     }
                     start()
+                }
+                progressArcAnimator = ValueAnimator.ofFloat(0f, 360F).apply {
+                    repeatMode = ValueAnimator.RESTART
+                    repeatCount = ValueAnimator.INFINITE
+                    duration = 1000L
+                    interpolator = LinearInterpolator()
+                    addUpdateListener {
+                        currentProgressArc = it.animatedValue as Float
+                        invalidate()
+                    }
                 }
                 progressArcAnimator.start()
             }
@@ -160,18 +163,29 @@ class LoadingButton @JvmOverloads constructor(
     }
 
     private fun Canvas.drawArcProgress(paint: Paint) {
-        val horizontalCenter =
-            (btnTextBound.right + btnTextBound.width() + 16F)
-        val verticalCenter = heightSize.div(2)
+        val circleRadius = resources.getDimension(R.dimen.dimen_20dp)
+        paint.color = Color.parseColor(resources.getString(R.color.colorAccent))
+        val xPosition = 3 * widthSize.toFloat() / 4
+        val yPosition = heightSize.toFloat() / 2
+        this.drawArc(
+            xPosition,
+            yPosition - circleRadius,
+            circleRadius * 2 + xPosition,
+            circleRadius + yPosition,
+            0F,
+            currentProgressArc,
+            true,
+            paint
+        )
 
-        progressOvalRect.set(
+        /*progressOvalRect.set(
             horizontalCenter - progressArcSize,
             verticalCenter - progressArcSize,
             horizontalCenter + progressArcSize,
             verticalCenter + progressArcSize
         )
         paint.color = Color.parseColor(resources.getString(R.color.colorAccent))
-        this.drawArc(progressOvalRect, 0F, currentProgressArc, true, paint)
+        this.drawArc(progressOvalRect, 0F, currentProgressArc, true, paint)*/
     }
 
     private fun Canvas.drawProgressRectangle(paint: Paint, progress: Float) {
@@ -201,7 +215,7 @@ class LoadingButton @JvmOverloads constructor(
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         super.onSizeChanged(w, h, oldw, oldh)
-        progressArcSize = (min(w, h).div(2)).times(0.4F)
+        progressArcSize = (min(w, h).div(2)).times(0.6F)
     }
 
 }
