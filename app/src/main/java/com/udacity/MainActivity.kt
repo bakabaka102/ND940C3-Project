@@ -63,7 +63,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     override fun initViews() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            if (this.isPermissionsGranted(Manifest.permission.POST_NOTIFICATIONS)) {
+            if (!this.isPermissionsGranted(Manifest.permission.POST_NOTIFICATIONS)) {
                 /*ActivityCompat.requestPermissions(
                     this,
                     arrayOf(Manifest.permission.POST_NOTIFICATIONS),
