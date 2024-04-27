@@ -32,11 +32,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0fc699c9-3153-46ce-a47a-52448a1827f3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/xml/content_detail_scene.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/udacity/utils/NetWorkUtils.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/udacity/DetailActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/udacity/DetailActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/content_detail.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/content_detail.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/udacity/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/udacity/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/udacity/notify/NotificationUtils.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/udacity/notify/NotificationUtils.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +46,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[45a8de480804]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[34e086d3]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -94,6 +94,10 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
+                    <option name="branchName" value="bugfix/fix-comment-1" />
+                    <option name="lastUsedInstant" value="1714055021" />
+                  </RecentBranch>
+                  <RecentBranch>
                     <option name="branchName" value="feature/motion-layout" />
                     <option name="lastUsedInstant" value="1713886264" />
                   </RecentBranch>
@@ -139,6 +143,9 @@
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\Project\Udacity\zzzAudit\ND940C3-Project\app\src\main\java\com\udacity\utils" />
+    </key>
+    <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
+      <recent name="com.udacity.utils" />
     </key>
   </component>
   <component name="RunManager">
@@ -307,8 +314,43 @@
       <option name="project" value="LOCAL" />
       <updated>1713111605878</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="- MotionLayout">
+      <option name="closed" value="true" />
+      <created>1713968990964</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1713968990964</updated>
+    </task>
+    <task id="LOCAL-00013" summary="- Fix comment">
+      <option name="closed" value="true" />
+      <created>1714058276737</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1714058276737</updated>
+    </task>
+    <task id="LOCAL-00014" summary="- Fix comment">
+      <option name="closed" value="true" />
+      <created>1714094903667</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1714094903667</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Implement download, notify" />
@@ -316,6 +358,8 @@
     <MESSAGE value="Implement download, notify&#10;- Animation download" />
     <MESSAGE value="Implement download, notify&#10;- Update shape of button" />
     <MESSAGE value="Implement download, notify&#10;- Update shape of button&#10;- Implement channel notification" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implement download, notify&#10;- Update shape of button&#10;- Implement channel notification" />
+    <MESSAGE value="- MotionLayout" />
+    <MESSAGE value="- Fix comment" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Fix comment" />
   </component>
 </project>

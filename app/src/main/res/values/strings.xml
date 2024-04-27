@@ -19,4 +19,7 @@
     <string name="file_name">File name: %s</string>
     <string name="download_status">Status: %s</string>
     <string name="download_status_des">Download status</string>
+
+    <string name="notification_action_status">Check the status</string>
+
 </resources>

@@ -1,6 +1,7 @@
 package com.udacity.notify
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -10,15 +11,14 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
-import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import com.udacity.DetailActivity
 import com.udacity.R
 import com.udacity.utils.Constants
 import com.udacity.utils.Logger
-import com.udacity.utils.ToastUtils
 import java.util.Date
 
 fun Context.createNotificationChannel() {
@@ -40,6 +40,7 @@ fun Context.createNotificationChannel() {
     }
 }
 
+@SuppressLint("MissingPermission")
 fun Context.showNotification(title: String, description: String) {
     Logger.d("title: $title  --- description: $description")
     val resultIntent = Intent(this, DetailActivity::class.java).apply {
@@ -50,14 +51,15 @@ fun Context.showNotification(title: String, description: String) {
             )
         )
     }
-    // Create the TaskStackBuilder.
     val resultPendingIntent: PendingIntent? = TaskStackBuilder.create(this).run {
-        // Add the intent, which inflates the back stack.
         addNextIntentWithParentStack(resultIntent)
-        // Get the PendingIntent containing the entire back stack.
         getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
     }
-
+    val statusAction = NotificationCompat.Action.Builder(
+        R.mipmap.ic_launcher,
+        this.getString(R.string.notification_action_status),
+        resultPendingIntent
+    ).build()
     val notification: Notification =
         NotificationCompat.Builder(this, Constants.CHANNEL_NOTIFY_ID)
             .setSmallIcon(R.mipmap.ic_launcher)
@@ -66,18 +68,25 @@ fun Context.showNotification(title: String, description: String) {
             .setStyle(NotificationCompat.BigTextStyle().bigText(description))
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
             .setContentIntent(resultPendingIntent).setAutoCancel(true)
+            .addAction(statusAction)
             .build()
 
-    if (ActivityCompat.checkSelfPermission(
-            this,
-            Manifest.permission.POST_NOTIFICATIONS
-        ) == PackageManager.PERMISSION_GRANTED
-    ) {
+    if (this.isPermissionsGranted(Manifest.permission.POST_NOTIFICATIONS)) {
         NotificationManagerCompat.from(this).notify(getNotificationId(), notification)
-    } else {
-        ToastUtils.showToast(this, "POST_NOTIFICATIONS is denied")
-        Logger.d("POST_NOTIFICATIONS is denied.")
     }
+}
+
+fun Context.isPermissionsGranted(vararg permissions: String): Boolean {
+    permissions.forEach { permission ->
+        if (ContextCompat.checkSelfPermission(
+                this,
+                permission
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            return false
+        }
+    }
+    return true
 }
 
 private fun getNotificationId(): Int {
