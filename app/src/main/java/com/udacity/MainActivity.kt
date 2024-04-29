@@ -10,16 +10,11 @@ import android.content.IntentFilter
 import android.content.pm.PackageManager
 import android.database.ContentObserver
 import android.database.Cursor
-import android.net.Uri
 import android.os.Build
 import android.os.Handler
 import android.os.Looper
-import android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS
 import android.view.View
 import android.widget.RadioButton
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.AlertDialog
 import androidx.core.net.toUri
 import com.udacity.base.BaseActivity
 import com.udacity.databinding.ActivityMainBinding
@@ -42,16 +37,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     private val mDownloadManager: DownloadManager by lazy {
         getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
     }
-    private val permissionLauncher: ActivityResultLauncher<Array<String>> =
-        registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { result ->
-            var allGranted = true
-            for (value in result.values) {
-                allGranted = allGranted && value
-            }
-            if (!allGranted) {
-                //showSettingDialog()
-            }
-        }
 
     companion object {
         const val REQUEST_CODE_NOTIFICATION = 101
@@ -76,7 +61,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             }
         }
         setSupportActionBar(mBinding.toolbar)
-        registerReceiver(receiver, IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE))
+        this.registerReceiver(
+            receiver,
+            IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE),
+            RECEIVER_EXPORTED
+        )
+        //this.registerReceiver(receiver, IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE))
     }
 
     override fun onRequestPermissionsResult(
@@ -102,19 +92,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                 ToastUtils.showToast(this, "No internet connected")
             }
         }
-    }
-
-    private fun showSettingDialog() {
-        val dialog = AlertDialog.Builder(this)
-        dialog.setTitle("Notification Permission")
-            .setMessage("Notification permission is required, Please allow notification permission from setting")
-            .setPositiveButton("Ok") { _, _ ->
-                val intent = Intent(ACTION_APPLICATION_DETAILS_SETTINGS)
-                intent.data = Uri.parse("package:$packageName")
-                startActivity(intent)
-            }
-            .setNegativeButton("Cancel", null)
-            .show()
     }
 
     private fun downloadFile() {
